@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_work/screen/all_tasks_screen.dart';
-import 'package:home_work/screen/assignment%20_1.dart';
-import 'package:home_work/screen/assignment_2.dart';
-import 'package:home_work/screen/assignment_3.dart';
+import 'package:home_work/assignemt_category_tabs_favorite/screen/assignment_2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: Assignment_2(),
+      home:Assignment_2(),
 
 
 

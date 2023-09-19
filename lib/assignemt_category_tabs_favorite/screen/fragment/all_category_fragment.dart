@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_work/data/category_data.dart';
-import 'package:home_work/widget/category_widget.dart';
+
+import '../../widget/category_widget.dart';
 
 class AllCategoryFragment extends StatefulWidget {
    AllCategoryFragment({Key? key,required this.updateUiFunc}) : super(key: key);

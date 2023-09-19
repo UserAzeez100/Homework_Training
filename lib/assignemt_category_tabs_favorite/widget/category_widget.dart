@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:home_work/model/Category.dart';
+
+import '../../assignemt3_products/model/Category.dart';
 
 class CategoryWidget extends StatefulWidget {
   CategoryWidget({Key? key,required this.category,required this.updateUi}) : super(key: key);

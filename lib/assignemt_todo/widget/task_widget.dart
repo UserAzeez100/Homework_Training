@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:home_work/model/Task.dart';
+
+import '../model/Task.dart';
 
 class TaskWidget extends StatefulWidget {
    TaskWidget({Key? key,required this.task,required this.updateUi}) : super(key: key);

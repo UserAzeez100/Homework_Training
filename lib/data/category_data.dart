@@ -1,7 +1,9 @@
-import '../model/Category.dart';
-import '../model/Trip.dart';
 
- List<Category> categories_data =  [
+
+ import '../assignemt3_products/model/Category.dart';
+import '../assignemt3_products/model/Trip.dart';
+
+List<Category> categories_data =  [
   Category(
     favoriteState:false,
     id: 'c1',

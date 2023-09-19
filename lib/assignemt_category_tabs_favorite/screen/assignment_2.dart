@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:home_work/screen/fragment/all_category_fragment.dart';
-import 'package:home_work/screen/fragment/favorite_category_fragment.dart';
+
+import 'fragment/all_category_fragment.dart';
+import 'fragment/favorite_category_fragment.dart';
 
 class Assignment_2 extends StatefulWidget {
   Assignment_2({Key? key}) : super(key: key);

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:home_work/data/todo_data.dart';
-import 'package:home_work/screen/fragment/complete_tasks_fragment.dart';
-import 'package:home_work/screen/fragment/in_complete_tasks_fragment.dart';
-import 'package:home_work/widget/task_widget.dart';
 
+import 'fragment/complete_tasks_fragment.dart';
+import 'fragment/in_complete_tasks_fragment.dart';
 import 'fragment/tasks_fragment.dart';
 
 class AllTasksScreen extends StatefulWidget {
