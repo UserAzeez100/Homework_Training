@@ -38,11 +38,11 @@ class _Assignmet_1State extends State<Assignment_1> {
                   child: Image.asset('images/image3.jpeg',fit: BoxFit.fill,)),
               accountName: Text('azeez Taweel'),
               accountEmail: Text(' azeezTaweel@.com')),
-          ListTileWidget('Home', Icon(Icons.home)),
-          ListTileWidget('part', Icon(Icons.mail_sharp)),
-          ListTileWidget('more', Icon(Icons.more_rounded)),
+          ListTileWidget('Home', Icon(Icons.home) as IconButton),
+          ListTileWidget('part', Icon(Icons.mail_sharp) as IconButton),
+          ListTileWidget('more', Icon(Icons.more_rounded) as IconButton),
           Spacer(),
-          ListTileWidget('Log out', Icon(Icons.logout_outlined))
+          ListTileWidget('Log out', Icon(Icons.logout_outlined) as IconButton)
         ]),
       ),
       appBar: AppBar(
@@ -131,9 +131,12 @@ class _Assignmet_1State extends State<Assignment_1> {
 
 class ListTileWidget extends StatelessWidget {
   late String text;
-  late Icon icon;
+  late IconButton icon;
+
+
 
   ListTileWidget(this.text, this.icon);
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../assignemt1/assignment _1.dart';
 import 'fragment/complete_tasks_fragment.dart';
 import 'fragment/in_complete_tasks_fragment.dart';
 import 'fragment/tasks_fragment.dart';
@@ -15,35 +16,68 @@ class AllTasksScreen extends StatefulWidget {
 }
 
 
-class _AllTasksScreenState extends State<AllTasksScreen> {
+
+class _AllTasksScreenState extends State<AllTasksScreen>with SingleTickerProviderStateMixin {
+  late TabController tabsController;
+
+  tabControllerFunc(){
+    tabsController=TabController(length: 3, vsync: this);
+
+  }
+
+  @override
+  void initState() {
+    tabControllerFunc();
+  }
+
+
   updateUiFunction(){
     setState(() {
 
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('To Do App'),
-          bottom: TabBar(tabs: [
-            Tab(
-              icon: Icon(Icons.cabin_outlined),text: 'All Tasks',),
-               Tab(icon: Icon(Icons.done_all_sharp), text: 'Complete'),
-            Tab(icon: Icon(Icons.cancel_rounded), text: 'In Complete')
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('To Do App'),
+        bottom: TabBar(controller: tabsController,tabs: [
+          Tab(
+            icon: Icon(Icons.cabin_outlined),text: 'All Tasks',),
+             Tab(icon: Icon(Icons.done_all_sharp), text: 'Complete'),
+          Tab(icon: Icon(Icons.cancel_rounded), text: 'In Complete')
+        ]),
+      ),
+        drawer: Drawer(
+          backgroundColor: Colors.white,
+          shape: ContinuousRectangleBorder(borderRadius: BorderRadiusDirectional.circular(20)),
+
+          child: Column(children: [
+            UserAccountsDrawerHeader(decoration: BoxDecoration(color: Colors.black26),
+
+                currentAccountPicture: ClipRRect(borderRadius: BorderRadius.circular(30),
+                    child: Image.asset('images/image3.jpeg',fit: BoxFit.fill,)),
+                accountName: Text('azeez Taweel'),
+                accountEmail: Text(' azeezTaweel@.com')),
+            ListTileWidget('all tasks',IconButton(onPressed: (){
+              tabsController.animateTo(0);
+            },icon: Icon(Icons.cabin))),
+            ListTileWidget('complete', IconButton(onPressed: (){
+              tabsController.animateTo(1);
+            }, icon: Icon(Icons.cabin))),
+            ListTileWidget('in complete ', IconButton(onPressed: (){
+              tabsController.animateTo(2);
+            },icon: Icon(Icons.cabin) )),
+            Spacer(),
           ]),
         ),
-        body:TabBarView(children: [
-          TasksFragment(updateUi:updateUiFunction ),
-          InCompleteTasksFragment(updateUi: updateUiFunction),
-          CompleteTasksFragment(updateUi: updateUiFunction)
-        ])
-
-
-      ),
+      body:TabBarView(controller: tabsController,children: [
+        TasksFragment(updateUi:updateUiFunction ),
+        InCompleteTasksFragment(updateUi: updateUiFunction),
+        CompleteTasksFragment(updateUi: updateUiFunction)
+      ])
     );
   }
 }

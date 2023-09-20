@@ -11,26 +11,36 @@ class Assignment_2 extends StatefulWidget {
 }
 
 class _Assignment_2State extends State<Assignment_2> {
+  PageController pageController = PageController();
 
-  updateUiFunc(){
+  updateUiFunc() {
     setState(() {});
   }
+  int selctedIndex=0;
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-          appBar: AppBar(
-            bottom: TabBar(tabs: [
-              Tab(text: 'All Category', icon: Icon(Icons.copy_all)),
-              Tab(
-                text: 'Favourite',
-                icon: Icon(Icons.favorite_rounded),
-              ),
-            ]),
-          ),
-          body: TabBarView(
-              children: [AllCategoryFragment(updateUiFunc: updateUiFunc,), FavoriteCategoryFragment(updateUiFunc: updateUiFunc,)])),
+    return Scaffold(
+      body: PageView(
+        controller: pageController,
+        onPageChanged: (pageScroll){
+          selctedIndex=pageScroll;
+          setState(() { });
+
+
+        },
+        children: [AllCategoryFragment(updateUiFunc: updateUiFunc),
+        FavoriteCategoryFragment(updateUiFunc: updateUiFunc)],
+      ),
+      bottomNavigationBar:BottomNavigationBar(
+        currentIndex: selctedIndex,
+          onTap: (x){
+          selctedIndex=x;
+          setState(() {});
+          pageController.animateToPage(x, duration: Duration(microseconds: 500), curve: Curves.linear);
+          },
+          items: [BottomNavigationBarItem(icon: Icon(Icons.home),label: "All Items"),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite,),label: "Favorite")]),
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:home_work/data/category_data.dart';
-
 import '../../widget/category_widget.dart';
 
 class FavoriteCategoryFragment extends StatefulWidget {
-   FavoriteCategoryFragment({Key? key,required this.updateUiFunc}) : super(key: key);
+   FavoriteCategoryFragment({Key? key,required this.updateUiFunc
+   }) : super(key: key);
   Function updateUiFunc;
 
   @override

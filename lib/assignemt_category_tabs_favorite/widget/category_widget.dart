@@ -21,13 +21,13 @@ List<String> textList=[];
 
 // GlobalKey<FormState> formStateKey = new GlobalKey<FormState>();
 TextEditingController _controller =TextEditingController();
-//
-// checkInputText(){
-//   var stat=formStateKey.currentState;
-//   stat!.validate()?print('valid'):print('Invalid') ;
-//   stat.save();
-//
-// }
+
+checkInputText(){
+  // var stat=formStateKey.currentState;
+  // stat!.validate()?print('valid'):print('Invalid') ;
+  // stat.save();
+
+}
 class _CategoryWidgetState extends State<CategoryWidget> {
   @override
   Widget build(BuildContext context) {
