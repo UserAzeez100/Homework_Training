@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:home_work/assignemt_todo/model/todo_provider.dart';
+import 'package:provider/provider.dart';
 import '../model/Task.dart';
 
-class TaskWidget extends StatefulWidget {
-   TaskWidget({Key? key,required this.task,required this.updateUi}) : super(key: key);
+class TaskWidget extends StatelessWidget {
+   TaskWidget({Key? key,required this.task}) : super(key: key);
 
 final Task task;
-Function updateUi;
 
-  @override
-  State<TaskWidget> createState() => _TaskWidgetState();
-}
-
-class _TaskWidgetState extends State<TaskWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,20 +15,19 @@ class _TaskWidgetState extends State<TaskWidget> {
 
       child: CheckboxListTile(
 
-        title:Text(widget.task.name),
-        subtitle:Text('${widget.task.isComplete}'),
-checkboxShape: OvalBorder(),
+        title:Text(task.name,style:TextStyle(fontWeight:FontWeight.bold,fontSize: 16),),
+        subtitle:Text('${task.isComplete}'),
+  checkboxShape: OvalBorder(),
 
 
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        hoverColor: Colors.black26,
+        hoverColor: Colors.black26,side: BorderSide(color:Colors.black26 ),fillColor: MaterialStatePropertyAll(Colors.grey),
 
 
-        tileColor:!widget.task.isComplete? Color(0xFFE57373) :Colors.tealAccent,
-        value: widget.task.isComplete, onChanged: (value) {
-
-          widget.task.isComplete=value!;
-          widget.updateUi();
+        tileColor:!task.isComplete?Color(0xFFE57373) :Colors.tealAccent,
+        value: task.isComplete, onChanged: (value) {
+          Provider.of<TodoProvider>(context,listen: false).updateStateToDo(task);
+          // widget.updateUi();
 
 
       },

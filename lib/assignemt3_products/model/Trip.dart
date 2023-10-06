@@ -15,20 +15,22 @@ enum TripType{
 }
 
   class Trip{
-  final String id;
-  final List<String> categories;
-  final String title;
-  final String imageUrl;
-  final List <String> activities;
-  final List<String> program;
-  final int duration;
-  final Season season;
-  final TripType tripType;
-  final bool isInSummer;
-  final bool isInWinter;
-  final bool isForFamilies;
+   String id;
+   List<String> categories;
+   String title;
+   String imageUrl;
+   List <String> activities;
+   List<String> program;
+   int duration;
+   Season season;
+   TripType tripType;
+   bool isInSummer =false;
+   bool isInWinter;
+   bool isForFamilies;
 
- const Trip({
+
+  Trip({
+
     required this.id,
     required this.categories,
     required this.title,

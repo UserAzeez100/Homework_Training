@@ -43,7 +43,7 @@ List<Category> categories_data =  [
   ),
 ];
 
-const Trips_data = const [
+ List<Trip> Trips_data =  [
   Trip(
     id: 'm1',
     categories: [

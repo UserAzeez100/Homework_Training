@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:home_work/main.dart';
+import 'package:provider/provider.dart';
 
 import 'fragment/all_category_fragment.dart';
 import 'fragment/favorite_category_fragment.dart';
@@ -20,27 +22,34 @@ class _Assignment_2State extends State<Assignment_2> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: pageController,
-        onPageChanged: (pageScroll){
-          selctedIndex=pageScroll;
-          setState(() { });
+    return ChangeNotifierProvider<AppController>(
+      create: (context) => AppController(),
+      child: Builder(
+        builder: (context) {
+          return Scaffold(
+            body: PageView(
+              controller: pageController,
+              onPageChanged: (pageScroll){
+                selctedIndex=pageScroll;
+                setState(() { });
 
 
-        },
-        children: [AllCategoryFragment(updateUiFunc: updateUiFunc),
-        FavoriteCategoryFragment(updateUiFunc: updateUiFunc)],
+              },
+              children: [AllCategoryFragment(updateUiFunc: updateUiFunc),
+              FavoriteCategoryFragment(updateUiFunc: updateUiFunc)],
+            ),
+            bottomNavigationBar:BottomNavigationBar(
+              currentIndex: selctedIndex,
+                onTap: (x){
+                selctedIndex=x;
+                setState(() {});
+                pageController.animateToPage(x, duration: Duration(microseconds: 500), curve: Curves.linear);
+                },
+                items: [BottomNavigationBarItem(icon: Icon(Icons.home),label: "All Items"),
+                  BottomNavigationBarItem(icon: Icon(Icons.favorite,),label: "Favorite")]),
+          );
+        }
       ),
-      bottomNavigationBar:BottomNavigationBar(
-        currentIndex: selctedIndex,
-          onTap: (x){
-          selctedIndex=x;
-          setState(() {});
-          pageController.animateToPage(x, duration: Duration(microseconds: 500), curve: Curves.linear);
-          },
-          items: [BottomNavigationBarItem(icon: Icon(Icons.home),label: "All Items"),
-            BottomNavigationBarItem(icon: Icon(Icons.favorite,),label: "Favorite")]),
     );
   }
 }
